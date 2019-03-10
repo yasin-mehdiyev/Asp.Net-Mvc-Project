@@ -1,0 +1,67 @@
+﻿@model Medway_Pratice.Models.Blog
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+
+                    <h3>Silmək isdədiyinizə əminsinizmi?</h3>
+                    <div>
+                        <hr />
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Title)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Title)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Photo)
+                            </dt>
+
+                            <dd>
+                                <img style="margin-top:10px;" src="~/Uploads/@Model.Photo" width="250" alt="@Model.Title" />
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Date)
+                            </dt>
+
+                            <dd>
+                                @Model.Date.Value.ToString("dd.MM.yyyy")
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Text)
+                            </dt>
+
+                            <dd style="margin-top:5px;">
+                                @Html.Raw(Model.Text)
+                            </dd>
+
+                        </dl>
+
+                        @using (Html.BeginForm())
+        {
+                @Html.AntiForgeryToken()
+
+                <div style="margin-bottom:10px;" class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-default" /> 
+                    <a class="btn btn-outline-primary" href="@Url.Action("index")">Əvvəlki səhifəyə qayıt</a>
+                </div>
+}
+                    </div>
+
+         
+
+
+
+
+
+
+
+
+                  

@@ -1,0 +1,122 @@
+﻿@using Medway_Pratice.Models
+
+@{
+    ViewBag.Title = "Contact";
+    Setting setting = ViewBag.Setting as Setting;
+}
+
+<!-- breadcrumb-section - start
+    ================================================== -->
+<section id="breadcrumb-section" class="breadcrumb-section clearfix">
+    <div class="overlay-white sec-ptb-100">
+        <div class="container">
+
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("index","home")">home</a></li>
+                <li class="breadcrumb-item">contact</li>
+            </ol>
+
+            <h2 class="breadcrumb-title">contact us</h2>
+
+        </div>
+    </div>
+</section>
+<!-- breadcrumb-section - end
+================================================== -->
+<!-- contact-section - start
+================================================== -->
+<section id="contact-section" class="contact-section sec-ptb-100 clearfix">
+    <div class="container">
+        <div class="row">
+
+            <!-- contact-form - start -->
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <form class="contact-form" action="@Url.Action("send")" method="post">
+
+                    <h2 class="title-large mb-40">
+                        write to us
+                    </h2>
+
+                    <input type="text" name="Name" placeholder="Name" required>
+                    <input type="email" name="Email" placeholder="Email" required>
+                    <input type="text" name="Subject" placeholder="Subject">
+                    <textarea placeholder="Write Your Message" name="Message" required></textarea>
+
+                    <div class="text-center">
+                        <button type="submit" class="custom-btn bg-orange waves-light">
+                            <span>send message</span>
+                            <i class="ion-android-send"></i>
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+            <!-- contact-form - end -->
+            <!-- basic info & map - start -->
+            <div class="col-lg-8 col-md-12 col-sm-12">
+
+                <!-- basic-info - start -->
+                <div class="basic-info">
+                    <div class="row">
+
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="basic-info-item text-center">
+
+                                <span class="icon">
+                                    <i class="ion-ios-location"></i>
+                                </span>
+                                <p>
+                                    @Html.Raw(setting.Adress)
+                                </p>
+                              
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="basic-info-item text-center">
+
+                                <span class="icon">
+                                    <i class="ion-android-call"></i>
+                                </span>
+
+                                <p>@setting.Phone</p>
+                                <p>@setting.WorkHour</p>
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="basic-info-item text-center">
+
+                                <span class="icon">
+                                    <i class="ion-ios-email"></i>
+                                </span>
+
+                                <p>@setting.Email</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- basic-info - end -->
+                <!-- google-map - start -->
+                <div id="google-map">
+                    <div id="googleMaps" class="google-map-container"></div>
+                </div>
+                <!-- google-map - end -->
+
+            </div>
+            <!-- basic info & map - end -->
+
+        </div>
+    </div>
+</section>
+<!-- contact-section - end
+================================================== -->
+
+@section scripts{
+    <!-- map jquery include -->
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyBP1lPhUhDU6MINpruPDinAzXffRlpzzFo"></script>
+    <script type="text/javascript" src="~/Public/js/gmap3.min.js"></script>
+}

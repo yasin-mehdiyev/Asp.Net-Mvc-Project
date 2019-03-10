@@ -1,0 +1,72 @@
+﻿@model List<Medway_Pratice.Models.Service>
+@{
+    ViewBag.Title = "Services";
+}
+
+<!-- breadcrumb-section - start
+    ================================================== -->
+<section id="breadcrumb-section" class="breadcrumb-section clearfix">
+    <div class="overlay-white sec-ptb-100">
+        <div class="container">
+
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("index","home")">home</a></li>
+                <li class="breadcrumb-item active">services</li>
+            </ol>
+
+            <h2 class="breadcrumb-title">services</h2>
+
+        </div>
+    </div>
+</section>
+<!-- breadcrumb-section - end
+================================================== -->
+<!-- service-section - start
+================================================== -->
+<section id="service-section" class="service-section sec-ptb-100 clearfix">
+    <div class="container">
+
+        <div class="section-title">
+            <h3>our best</h3>
+            <h2>service</h2>
+        </div>
+
+
+
+        <div class="row">
+
+            @foreach (var services in Model)
+            {
+                <!-- item - start -->
+                <div class="col-lg-4 mb-4 col-md-6 col-sm-12">
+                    <div class="item" style="background-image:url('Uploads/@services.BgPhoto')">
+                        <div class="overlay-white">
+
+                            <h4 class="title-small mb-40">
+                               @services.Name
+                                <small class="icon">
+                                    <img src="~/Uploads/@services.Icon" alt="@services.Name">
+                                </small>
+                            </h4>
+                           
+                            @Html.Raw(services.Text)
+
+                            <a href="@Url.Action("read","services",new { id=services.Id })" class="learn-more">
+                                learn more
+                                <i class="ion-android-arrow-forward"></i>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- item - end -->
+            }
+
+
+        </div>
+        <!-- row - end -->
+
+    </div>
+</section>
+<!-- service-section - end
+================================================== -->

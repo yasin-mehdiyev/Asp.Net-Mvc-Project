@@ -1,0 +1,97 @@
+﻿@model Medway_Pratice.Models.Blog
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<!-- breadcrumb-section - start
+    ================================================== -->
+<section id="breadcrumb-section" class="breadcrumb-section clearfix">
+    <div class="overlay-white sec-ptb-100">
+        <div class="container">
+
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("index","home")">home</a></li>
+                <li class="breadcrumb-item">blog</li>
+            </ol>
+
+            <h2 class="breadcrumb-title">@Model.Title</h2>
+
+        </div>
+    </div>
+</section>
+<!-- breadcrumb-section - end
+================================================== -->
+<!-- blog-section - start
+================================================== -->
+<section id="blog-section" class="blog-section sec-ptb-100 clearfix">
+    <div class="container">
+        <div class="row">
+
+            <!-- blog-details - start -->
+            <div class="col-lg-8 col-md-12 col-sm-12">
+                <div class="blog-details">
+
+                    <!-- blog-details-img - start -->
+                    <div class="blog-details-img mb-40">
+                        <img width="500" src="~/Uploads/@Model.Photo" alt="@Model.Title">
+                    </div>
+                    <!-- blog-details-img - end -->
+
+                    <ul class="post-mate ul-li mb-40">
+                        <li>
+                            Date: <span class="clr-black">@Model.Date.Value.ToString("dd MMM yyyy")</span>
+                        </li>
+                    </ul>
+
+                    <!-- blog-details-contant - start -->
+                    <div class="blog-details-contant mb-40">
+                        <h2 class="title-xlarge mb-15">
+                            @Model.Title
+                        </h2>
+
+                        @Html.Raw(Model.Text)
+
+                    </div>
+                    <!-- blog-details-contant - end -->
+                </div>
+            </div>
+            <!-- blog-details - end -->
+            <!-- right-sidebar - start -->
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <div class="right-sidebar">
+                    <!-- rs-recent-post - start -->
+                    <div class="rs-recent-post mb-30">
+                        <h2 class="title-small">
+                            recent post
+                        </h2>
+
+                        <ul class="rs-recent-post-list ul-li-block">
+                            @foreach (var blogs in ViewBag.Blogs)
+                            {
+                                <li>
+                                    <a href="@Url.Action("details","blogs",new { id=blogs.Id })" class="waves-effect">
+                                        <span class="post-img float-left">
+                                            <img src="~/Uploads/@blogs.Photo" alt="@blogs.Title">
+                                        </span>
+                                        <p style="font-size:12px;">
+                                            @blogs.Title
+                                        </p>
+                                       
+
+                                        <small>@blogs.Date.ToString("dd MMM, yyyy")</small>
+                                    </a>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+                    <!-- rs-recent-post - end -->
+                </div>
+            </div>
+            <!-- right-sidebar - end -->
+        </div>
+    </div>
+</section>
+<!-- blog-section - end
+================================================== -->

@@ -1,0 +1,77 @@
+﻿@model Medway_Pratice.Models.Blog
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="main-panel">
+    <div class="content">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <h2>Details</h2>
+
+                    <div>
+                        <hr />
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Title)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Title)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Photo)
+                            </dt>
+
+                            <dd>
+                                <img src="~/Uploads/@Model.Photo" width="250" alt="@Model.Photo" />
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Date)
+                            </dt>
+
+                            <dd>
+                                @Model.Date.Value.ToString("dd/MM/yyyy")
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Text)
+                            </dt>
+
+                            <dd>
+                                @Html.Raw(Model.Text)
+                            </dd>
+
+                        </dl>
+                    </div>
+                    <p>
+                        <a class="btn btn-outline-primary" href="@Url.Action("edit",new { id=Model.Id })">Edit</a>
+                        <a class="btn btn-outline-primary" href="@Url.Action("index")">Əvvəlki Səhifəyə Qayıt</a>
+                    </p>
+
+
+
+
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+                   

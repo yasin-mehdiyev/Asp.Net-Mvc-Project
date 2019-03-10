@@ -1,0 +1,67 @@
+﻿@model Medway_Pratice.Models.vwRequest
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@if (Session["AdminLevel"] != null)
+{
+    <div class="alert alert-warning">
+        @Session["AdminLevel"]
+    </div>
+
+    Session["AdminLevel"] = null;
+}
+
+
+<!-- Example DataTables Card-->
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-table"></i> Sifarişlər Siyahısı
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Ad-Soyad</th>
+                        <th>E-poçt</th>
+                        <th>Tarix</th>
+                        <th>Mobil Telefon</th>
+                        <th>Yükün adı</th>
+                        <th>Mətn</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Ad-Soyad</th>
+                        <th>E-poçt</th>
+                        <th>Tarix</th>
+                        <th>Mobil Telefon</th>
+                        <th>Yükün adı</th>
+                        <th>Mətn</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model.requests)
+                    {
+                        <tr>
+                            <td>@item.Fullname</td>
+                            <td>@item.Email</td>
+                            <td>@item.Date.ToString("dd.MM.yyyy HH:mm")</td>
+                            <td>@item.Phone</td>
+                            <td>@item.Loadname</td>
+                            <td>@item.Text</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+  
+    <div class="card-footer small text-muted">Sonuncu edilən sifariş tarixi: @Model.Date.Date.ToString("dd.MM.yyyy HH:mm") </div>
+</div>
+
+
+

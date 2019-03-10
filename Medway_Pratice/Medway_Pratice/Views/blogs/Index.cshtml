@@ -1,0 +1,62 @@
+﻿@model Medway_Pratice.Models.vwBlog
+@{
+    ViewBag.Title = "Blog";
+}
+
+<!-- breadcrumb-section - start
+    ================================================== -->
+<section id="breadcrumb-section" class="breadcrumb-section clearfix">
+    <div class="overlay-white sec-ptb-100">
+        <div class="container">
+
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("index","home")">home</a></li>
+                <li class="breadcrumb-item active">blogs</li>
+            </ol>
+
+            <h2 class="breadcrumb-title">our blogs</h2>
+
+        </div>
+    </div>
+</section>
+<!-- breadcrumb-section - end
+================================================== -->
+<!-- blog-section - start
+================================================== -->
+<section id="blog-section" class="blog-section sec-ptb-100 clearfix">
+    <div class="container">
+
+        <ul class="nav blog-nav nav-justified">
+            @foreach (var item in Model.Dates)
+            {
+                DateTime date = new DateTime(item.Year, item.Month, 1);
+                <li class="nav-item">
+                    <a class="nav-link @(Model.SelecetedYear==item.Year && Model.SelectedMonth==item.Month?"active":"")" href="@Url.Action("index",new { year=item.Year,month=item.Month })">@date.ToString("MMMM") @item.Year</a>
+                </li>
+            }
+        </ul>
+
+        <div class="tab-content">
+
+
+            <!-- Panel 2 - start -->
+            <div class="tab-pane fade in show active" id="october" role="tabpanel">
+
+                <div class="row">
+
+                    @{
+                        Html.RenderPartial("~/Views/Shared/_blog.cshtml", Model.Blogs);
+                    }
+
+                </div>
+
+            </div>
+            <!-- Panel 2 - end -->
+
+
+        </div>
+
+    </div>
+</section>
+<!-- blog-section - end
+================================================== -->

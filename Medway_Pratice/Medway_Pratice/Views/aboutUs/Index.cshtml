@@ -1,0 +1,117 @@
+﻿@model Medway_Pratice.Models.vwAbout
+
+@{
+    ViewBag.Title = "About";
+}
+
+<!-- breadcrumb-section - start
+    ================================================== -->
+<section id="breadcrumb-section" class="breadcrumb-section clearfix">
+    <div class="overlay-white sec-ptb-100">
+        <div class="container">
+
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("index","home")">home</a></li>
+                <li class="breadcrumb-item active">about</li>
+            </ol>
+
+            <h2 class="breadcrumb-title">about us</h2>
+
+        </div>
+    </div>
+</section>
+<!-- breadcrumb-section - end
+================================================== -->
+<!-- about-section - start
+================================================== -->
+<section id="about-section" class="about-section sec-ptb-100 clearfix">
+    <div class="container">
+
+        <div class="row">
+            <!-- about-us-area - start -->
+            <div class="col-lg-6 col-md-12 col-xs-12">
+                <h2 class="title-xlarge mb-40 clr-orange">wellcome to MedWay</h2>
+
+                <div class="about-us-area">
+                    <h4 class="title-small mb-40">
+                        @Model.about.Title
+                    </h4>
+
+                    @Html.Raw(Model.about.Text)
+
+                </div>
+            </div>
+            <!-- about-us-area - end -->
+            <!-- question-area - start -->
+            <div class="col-lg-6 col-md-12 col-xs-12">
+
+                <ul class="slickslide slickslide-about">
+                    @foreach (var item in Model.aboutPhotos)
+                    {
+                        <li>
+                            <img src="~/Uploads/@item.Photo" alt="image" />
+                        </li>
+                    }
+                </ul>
+                <div class="slick-thumbs">
+                    <ul>
+                        @foreach (var item in Model.aboutPhotos)
+                        {
+                            <li>
+                                <img src="~/Uploads/@item.Photo" alt="image" />
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+            </div>
+            <!-- question-area - end -->
+        </div>
+
+
+        <!-- more-about-us - start -->
+        <div class="more-about-us">
+            <div class="row">
+
+                <!-- philosophy - start -->
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="philosophy">
+                        <h4 class="title-xsmall clr-orange">read our</h4>
+                        <h3 class="title-xlarge mb-40">philosophy</h3>
+                          
+                        @Html.Raw(Model.about.Philosophy)
+
+                    </div>
+                </div>
+                <!-- philosophy - end -->
+                <!-- mission - start -->
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="mission">
+                        <h4 class="title-xsmall clr-orange">why we formed</h4>
+                        <h3 class="title-xlarge mb-40">mission</h3>
+
+                          @Html.Raw(Model.about.Mission)
+
+                    </div>
+                </div>
+                <!-- mission - end -->
+                <!-- vission - start -->
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="vission">
+                        <h4 class="title-xsmall clr-orange">about our</h4>
+                        <h3 class="title-xlarge mb-40">vission</h3>
+                       
+                        @Html.Raw(Model.about.Vission)
+
+                    </div>
+                </div>
+                <!-- vission - end -->
+
+            </div>
+        </div>
+        <!-- more-about-us - end -->
+
+    </div>
+</section>
+<!-- about-section - end
+================================================== -->

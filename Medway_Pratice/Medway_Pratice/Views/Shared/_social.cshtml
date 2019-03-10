@@ -1,0 +1,52 @@
+﻿@model Medway_Pratice.Models.Setting
+
+    <ul class="social">
+
+
+        @if (!string.IsNullOrEmpty(Model.Facebook))
+        {
+            <li>
+                <a href="@Model.Facebook" target="_blank" class="bg-facebook waves-light">
+                    <i class="ion-social-facebook-outline"></i>
+                </a>
+            </li>
+        }
+
+
+        @if (!string.IsNullOrEmpty(Model.Linkedin))
+        {
+            <li>
+                <a href="@Model.Linkedin" target="_blank" class="bg-linkedin waves-light">
+                    <i class="ion-social-linkedin-outline"></i>
+                </a>
+            </li>
+        }
+
+        @if (!string.IsNullOrEmpty(Model.Youtube))
+        {
+            <li>
+                <a href="@Model.Youtube" target="_blank" class="bg-youtube waves-light">
+                    <i class="ion-social-youtube-outline"></i>
+                </a>
+            </li>
+        }
+
+        @if (!string.IsNullOrEmpty(Model.GooglePlus))
+        {
+            <li>
+                <a href="@Model.GooglePlus" target="_blank" class="bg-googleplus waves-light">
+                    <i class="ion-social-googleplus-outline"></i>
+                </a>
+            </li>
+        }
+
+        @if (!string.IsNullOrEmpty(Model.Twitter))
+        {
+            <li>
+                <a href="@Model.Twitter" target="_blank" class="bg-twitter waves-light">
+                    <i class="ion-social-twitter-outline"></i>
+                </a>
+            </li>
+        }
+
+    </ul>

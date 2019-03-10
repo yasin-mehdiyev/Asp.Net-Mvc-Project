@@ -1,0 +1,46 @@
+﻿@model List<Medway_Pratice.Models.Blog>
+
+@foreach (var blogs in Model)
+{
+    <!-- blog - start -->
+    <div class="col-lg-4 col-md-12 col-sm-12">
+        <div class="blog">
+
+            <div class="blog-img">
+                <img src="~/Uploads/@blogs.Photo" alt="@blogs.Title">
+                <span class="date">
+                    @blogs.Date.Value.ToString("dd MMM yyyy")
+                </span>
+            </div>
+
+            <div class="blog-contant clearfix">
+
+                <h3 class="title-xsmall mb-40">
+                    @blogs.Title
+                </h3>
+
+                <div>
+                    <a href="@Url.Action("details","blogs",new { id=blogs.Id })" class="learn-more float-left">
+                        learn more
+                        <i class="ion-android-arrow-forward"></i>
+                    </a>
+                    <ul class="share-list float-right text-right">
+                        <li>
+                            <a href="#!" class="share">
+                                share
+                                <i class="ion-android-share-alt clr-orange"></i>
+                            </a>
+                        </li>
+                        <li class="share-link facebook"><a href="#!"><i class="ion-social-facebook"></i></a></li>
+                        <li class="share-link twitter"><a href="#!"><i class="ion-social-twitter"></i></a></li>
+                        <li class="share-link googleplus"><a href="#!"><i class="ion-social-googleplus"></i></a></li>
+                        <li class="share-link linkedin"><a href="#!"><i class="ion-social-linkedin-outline"></i></a></li>
+                        <li class="share-link dribbble"><a href="#!"><i class="ion-social-dribbble-outline"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- blog - end -->
+}

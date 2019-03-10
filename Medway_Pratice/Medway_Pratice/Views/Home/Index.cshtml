@@ -1,0 +1,146 @@
+﻿@model Medway_Pratice.Models.vwHome
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<!-- slider-section - start
+================================================== -->
+<section id="slider-section" class="slider-section clearfix">
+
+    @foreach (var sliders in Model.Sliders)
+    {
+        <!-- item - start -->
+        <div class="item" style="background-image:url('Uploads/@sliders.Photo')">
+            <div class="overlay-white">
+                <div class="container">
+                    @if (!string.IsNullOrEmpty(sliders.Title))
+                    {
+                        <h3 class="clr-orange mb-15">@sliders.Title</h3>
+                    }
+
+                    @if (!string.IsNullOrEmpty(sliders.Slogan))
+                    {
+                        <h1 class="mb-40">
+                            @Html.Raw(sliders.Slogan)
+                        </h1>
+                    }
+
+                    @if (!string.IsNullOrEmpty(sliders.MoreLink))
+                    {
+                        <div class="text-left">
+                            <a href="@sliders.MoreLink" target="_blank" class="custom-btn bg-orange waves-light">
+                                <span>@sliders.MoreLinkText</span>
+                                <i class="ion-ios-arrow-forward"></i>
+                            </a>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+        <!-- item - end -->
+    }
+</section>
+<!-- slider-section - end
+================================================== -->
+<!-- features-section - start
+================================================== -->
+<section id="features-section" class="features-section clearfix">
+    <div class="container">
+
+        <!-- features-items-area - start -->
+        <ul class="features-items-area z-depth-1">
+
+            @for (int i = 0; i < Model.Features.Count; i++)
+            {
+                <li>
+                    <div class="feature-title mb-15">
+                        <h2>
+                            <i class="ion-android-checkmark-circle"></i>
+                            @Model.Features[i].Title
+                        </h2>
+                    </div>
+
+                    <div class="feature-contant">
+                        <h3>@(i + 1)</h3>
+                        <p>
+                            @Model.Features[i].Desc
+                        </p>
+                    </div>
+                </li>
+            }
+        </ul>
+        <!-- features-items-area - end -->
+    </div>
+</section>
+<!-- features-section - end
+================================================== -->
+
+
+
+<!-- service-section - start
+================================================== -->
+<section id="service-section" class="service-section sec-ptb-100 clearfix">
+    <div class="container">
+
+        <div class="section-title">
+            <h3>our best</h3>
+            <h2>service</h2>
+        </div>
+
+        <!-- service-slider - start -->
+        <div class="service-slider owl-carousel owl-theme">
+
+            @foreach (var services in Model.Services)
+            {
+                <!-- item - start -->
+                <div class="item" style="background-image:url('Uploads/@services.BgPhoto')">
+                    <div class="overlay-white">
+                        <h4 class="title-small mb-40">
+                         @services.Name
+                            <small class="icon">
+                                <img src="~/Uploads/@services.Icon" alt="icon">
+                            </small>
+                        </h4>
+                        <p>
+                           @services.Desc
+                        </p>
+                    </div>
+                </div>
+                <!-- item - end -->
+
+            }
+        </div>
+        <!-- service-slider - end -->
+
+    </div>
+</section>
+<!-- service-section - end
+================================================== -->
+
+
+
+
+<!-- blog-section - start
+================================================== -->
+<section id="blog-section" class="blog-section sec-ptb-100 clearfix">
+    <div class="container">
+
+        <!-- section-title - start -->
+        <div class="section-title">
+            <h3>news & updates</h3>
+            <h2>our blog</h2>
+        </div>
+        <!-- section-title - end -->
+
+        <div class="row">
+
+            @{
+                Html.RenderPartial("~/Views/Shared/_blog.cshtml",Model.Blogs);
+            }
+
+        </div>
+    </div>
+</section>
+<!-- blog-section - end
+================================================== -->
